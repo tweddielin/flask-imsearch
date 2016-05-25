@@ -1,0 +1,47 @@
+<!--
+Dropbox location:
+https://dl.dropboxusercontent.com/u/10578702/img/
+-->
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="row">
+
+  <div class="col-md-7">
+    <h2>Select an Image</h2>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <p><img src="https://dl.dropboxusercontent.com/u/10578702/img/test1.jpg" style="height: 225px;" class="img"></p>
+        <p><img src="https://dl.dropboxusercontent.com/u/10578702/img/test2.jpg" style="height: 225px;" class="img"></p>
+      </div>
+      <div class="col-md-6">
+        <p><img src="https://dl.dropboxusercontent.com/u/10578702/img/test3.jpg" style="height: 225px;" class="img"></p>
+        <p><img src="https://dl.dropboxusercontent.com/u/10578702/img/test4.jpg" style="height: 225px;" class="img"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-md-offset-1">
+    <h2>Results</h2>
+    <br>
+    <p id="searching">Searching...</p>
+    <p id="error">Oh no! No results! Check your internet connection.</p>
+    <table class="table" id="results-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody id="results">
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<br>
+
+{% endblock %}
