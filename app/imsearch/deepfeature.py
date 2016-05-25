@@ -31,8 +31,10 @@ class DeepFeature:
         net['drop7'] = DropoutLayer(net['fc7'], p=0.5)
         net['fc8'] = DenseLayer(net['drop7'], num_units=1000, nonlinearity=lasagne.nonlinearities.softmax)
 
-        model = pickle.load(open('https://dl.dropboxusercontent.com/u/10578702/img/vgg_cnn_s.pkl'))
-
+        print "loading vgg_cnn_s.pkl..."
+        #model = pickle.load(urllib.urlopen('https://dl.dropboxusercontent.com/u/10578702/img/vgg_cnn_s.pkl'))
+        model = pickle.load(open('../../vgg_cnn_s.pkl'))
+        print "vgg_cnn_s.pkl loaded!"
         self.output_layer = net['fc7']
         self.CLASSES = model['synset words']
         self.MEAN_IMAGE = model['mean image']
