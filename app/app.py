@@ -22,7 +22,6 @@ def index():
 
 @app.route('/search', methods=['POST'])
 def search():
-
     if request.method == "POST":
 
         RESULTS_ARRAY = []
@@ -34,6 +33,7 @@ def search():
             # Color Descriptor
             # initialize the image descriptor
             #cd = ColorDescriptor((8, 12, 3))
+
             # load the query image and describe it
             #from skimage import io
             import cv2
