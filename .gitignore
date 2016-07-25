@@ -2,7 +2,7 @@
 vgg_cnn_s.pkl
 
 # INRIA dataset
-INRIA/*
+app/static/INRIA/*
 
 # Distribution / packaging
 .Python
