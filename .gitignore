@@ -1,3 +1,7 @@
+# 
+ENV
+config
+
 # vgg network file
 vgg_cnn_s.pkl
 
