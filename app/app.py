@@ -1,9 +1,9 @@
 import os
 from flask import Flask, render_template, request, jsonify, flash, url_for, redirect
-from imsearch.colordescriptor import ColorDescriptor
+#from imsearch.colordescriptor import ColorDescriptor
 from imsearch.deepfeature import DeepFeature
 from imsearch.searcher import Searcher
-from imsearch import imutils
+#from imsearch import imutils
 from werkzeug import secure_filename
 # create flask instance
 
@@ -27,7 +27,7 @@ def search():
         RESULTS_ARRAY = []
 
         # get url
-        image_url = 'static' + request.form.get('img')
+        image_url = '/home/tweddielin/cbir/flask-imsearch/app/static' + request.form.get('img')
         print image_url
         try:
             # Color Descriptor
@@ -35,10 +35,13 @@ def search():
             #cd = ColorDescriptor((8, 12, 3))
 
             # load the query image and describe it
-            #from skimage import io
-            import cv2
-            #query = io.imread(image_url)
-            #query = (query * 255).astype("uint8")
+            from skimage import io
+            print 'skimge loaded'
+            #import cv2
+            query = io.imread(image_url)
+            print "successfully transform query image!"
+            query = (query * 255).astype("uint8")
+            print 'successfully transform query image from url!'
             #(r, g, b) = cv2.split(query)
             #query = cv2.merge([b, g, r])
 
@@ -47,11 +50,14 @@ def search():
 
 
             # Deep Feature
-            query = imutils.url2image(image_url)
+            #query = imutils.url2image(image_url)
+            print 'feature extracting...'
             features = df.describe(image_url)
-
+            print 'feature extracted'
             # perform the search
+            print 'performing the search'
             searcher = Searcher(INDEX)
+            print 'search done'
             results = searcher.search(features)
             # loop over the results, displaying the score and image name
             for (score, resultID) in results:
@@ -83,4 +89,4 @@ def upload_file():
 
 # run!
 if __name__ == '__main__':
-    app.run('0.0.0.0', debug=True)
+    app.run()

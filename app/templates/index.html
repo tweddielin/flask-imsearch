@@ -7,6 +7,7 @@ https://dl.dropboxusercontent.com/u/10578702/img/
 {% block content %}
 
 <div class="row">
+<h2> Image Retrieval Using Deep Neural Network </h2>
 <h3>Upload an Image</h3>
   <form action="uploader" method="POST" enctype="multipart/form-data">
       <input type="file" name="file">
@@ -22,10 +23,10 @@ https://dl.dropboxusercontent.com/u/10578702/img/
         <p><img src="{{ url_for('static', filename='upload.jpg') }}" style="height: 225px;" class="img"></p>
         <p><img src="{{ url_for('static', filename='test1.jpg') }}" style="height: 225px;" class="img"></p>
         <p><img src="{{ url_for('static', filename='test3.jpg') }}" style="height: 225px;" class="img"></p>
-        <p><img src="{{ url_for('static', filename='test5.jpg') }}" style="height: 225px;" class="img"></p>
+        <p><img src="{{ url_for('static', filename='test2.jpg') }}" style="height: 225px;" class="img"></p>
       </div>
       <div class="col-md-6">
-        <p><img src="{{ url_for('static', filename='test2.jpg') }}" style="height: 225px;" class="img"></p>
+        <p><img src="{{ url_for('static', filename='test5.jpg') }}" style="height: 225px;" class="img"></p>
         <p><img src="{{ url_for('static', filename='test4.jpg') }}" style="height: 225px;" class="img"></p>
         <p><img src="{{ url_for('static', filename='test6.jpg') }}" style="height: 225px;" class="img"></p>
         <p><img src="{{ url_for('static', filename='test7.jpg') }}" style="height: 225px;" class="img"></p>

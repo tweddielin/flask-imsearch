@@ -1,8 +1,16 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import lasagne
 from lasagne.layers import InputLayer, DenseLayer, DropoutLayer
-from lasagne.layers.dnn import Conv2DDNNLayer as ConvLayer
+#from lasagne.layers.dnn import Conv2DDNNLayer as ConvLayer
+#try:
+#    import lasagne.layers.dnn
+#    ConvLayer = lasagne.layers.dnn.Conv2DNNLayer
+#except ImportError:
+#    ConvLayer = lasagne.layers.Conv2DLayer
+from lasagne.layers import Conv2DLayer as ConvLayer
 from lasagne.layers import MaxPool2DLayer as PoolLayer
 from lasagne.layers import LocalResponseNormalization2DLayer as NormLayer
 from lasagne.utils import floatX
@@ -33,7 +41,7 @@ class DeepFeature:
 
         print "loading vgg_cnn_s.pkl..."
         #model = pickle.load(urllib.urlopen('https://dl.dropboxusercontent.com/u/10578702/img/vgg_cnn_s.pkl'))
-        model = pickle.load(open('../../vgg_cnn_s.pkl'))
+        model = pickle.load(open('/home/tweddielin/cbir/flask-imsearch/app/static/vgg_cnn_s.pkl'))
         print "vgg_cnn_s.pkl loaded!"
         self.output_layer = net['fc7']
         self.CLASSES = model['synset words']
