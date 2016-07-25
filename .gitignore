@@ -1,6 +1,9 @@
 # vgg network file
 vgg_cnn_s.pkl
 
+# INRIA dataset
+INRIA/
+
 # Distribution / packaging
 .Python
 env/
