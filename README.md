@@ -1,3 +1,3 @@
 # flask-imsearch
 
-demo: http://tweddielin.pythonanywhere.com/
+demo: inria.tweddielin.com
