@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, jsonify, flash, url_for, redirect
+from flask import Flask, render_template, request, jsonify, flash, url_for, redirect, send_from_directory
 #from imsearch.colordescriptor import ColorDescriptor
 from imsearch.deepfeature import DeepFeature
 from imsearch.searcher import Searcher
@@ -7,7 +7,7 @@ from imsearch.searcher import Searcher
 from werkzeug import secure_filename
 # create flask instance
 
-UPLOAD_FOLDER = 'static'
+UPLOAD_FOLDER = '/home/tweddielin/cbir/flask-imsearch/app/static'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'JPG'])
 INDEX = os.path.join(os.path.dirname(__file__), 'deep_index.csv')
 #INDEX = os.path.join(os.path.dirname(__file__), 'index.csv')
@@ -78,14 +78,32 @@ def allowed_file(filename):
 
 @app.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
+    print "UPLOADING!!!"
     if request.method == 'POST':
+        print "POST SUCCESSFULLY!!"
+        if 'file' not in request.files:
+            print "FILE IS NOT IN REQUEST.FILE!!!"
+            flash('No file part')
+            return redirect(request.url)
         file = request.files['file']
+        
+        if file.filename == '':
+            print "FILE NAME IS NULL!!!"
+            flash('No selected file')
+            return redirect(request.url)
+
         if file and allowed_file(file.filename):
+            print "SAVING!!!"
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload.jpg'))
+            print os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], "upload.jpg"))
             #flash("file uploaded successfully!")
+            #return redirect(url_for('uploaded_file',filename=filename))
             return render_template('index.html')
 
+@app.route('/static/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 # run!
 if __name__ == '__main__':

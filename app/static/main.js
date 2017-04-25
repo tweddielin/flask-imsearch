@@ -51,8 +51,9 @@ $(function() {
         $("#searching").hide();
         // loop through results, append to dom
         for (i = 0; i < data.length; i++) {
-            $("#results").append('<tr><th><a href="'+url+data[i]["image"]+'"><img src="'+url+data[i]["image"]+
+            $("#results").append('<tr><th><a href="'+url+data[i]["image"]+'" target="_blank"'+'"><img src="'+url+data[i]["image"]+
             '" class="result-img"></a></th><th>'+data[i]['score']+'</th></tr>')
+
         };
       },
       // handle error

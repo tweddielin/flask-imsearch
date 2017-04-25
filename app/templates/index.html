@@ -7,13 +7,19 @@ https://dl.dropboxusercontent.com/u/10578702/img/
 {% block content %}
 
 <div class="row">
-<h2> Image Retrieval Using Deep Neural Network </h2>
-<h3>Upload an Image</h3>
-  <form action="uploader" method="POST" enctype="multipart/form-data">
-      <input type="file" name="file">
-      <input type="submit" value="Upload">
-  </form>
+<h2> Content-Based Image Retrieval Using Deep Neural Network </h2>
+<h2> Search On INRIA Holidays Dataset </h2>
+<br >
+<br>
+<div class="row">
+    <div class="col-sm-3"><h4>Upload an Image</h4></div>
+        <form action="uploader" method="POST" enctype="multipart/form-data">
+            <div class="col-sm-3"><input type="file" name="file"></div>
+            <div class="col-sm-1"><input type="submit" value="Upload"></div>
+        </form>
 </div>
+</div>
+<br>
 <div class="row">
   <div class="col-md-7">
     <h2>Select an Image</h2>
